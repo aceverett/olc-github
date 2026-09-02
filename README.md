@@ -1,6 +1,10 @@
-# OLC Accelerate 2026 Workshop
+# GitHub is for IDs, Too: Using Free Developer Tools to Build Custom LMS Interactives
 
-This repository contains the participant materials for the OLC Accelerate 2026 session **GitHub Is for Instructional Designers, Too**.
+> "Gather with colleagues, recharge your practice, and celebrate the work shaping the future of digital learning."
+
+**Presenters:** Anna Everett & Jian Su (University of Tennessee, Knoxville, Digital Learning)
+
+Welcome to the companion repository for our OLC Accelerate 2026 session. This repository hosts all presentation materials, interactive artifacts, and supporting documentation curated for our exploration of digital learning futures.
 
 ## What is included
 
@@ -9,7 +13,7 @@ This repository contains the participant materials for the OLC Accelerate 2026 s
 
 ## Start here
 
-- [Open the example interactive webpage](aceverett.github.io/olc-github/)
+- [Open the example interactive webpage](https://aceverett.github.io/olc-github/)
 - [Open the presentation slides]
 
 ## Workshop steps
