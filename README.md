@@ -38,6 +38,6 @@ Copy and paste the iframe code below into the HTML editor in your LMS. Insert th
 - `slides/` — our conference presentation
 
 ## Questions?
-Email Anna Everett (everetta@utk.edu) or Jian Su (jsu1@ utk.edu). 
+Email Anna Everett (everetta@utk.edu) or Jian Su (jsu1@utk.edu). 
 
 
