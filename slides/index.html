@@ -1,0 +1,1530 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GitHub is for IDs, Too | OLC Accelerate 2026</title>
+    <style>
+      :root {
+        --ivory: #faf9f5;
+        --paper: #ffffff;
+        --slate: #141413;
+        --clay: #d97757;
+        --olive: #788c5d;
+        --blue: #315c7c;
+        --oat: #e3dacc;
+        --gray-150: #f0eee6;
+        --gray-300: #d1cfc5;
+        --gray-500: #77766f;
+        --gray-700: #3d3d3a;
+        --serif: ui-serif, Georgia, "Times New Roman", serif;
+        --sans: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+        --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--ivory);
+        color: var(--slate);
+        font-family: var(--sans);
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+        scroll-snap-type: y mandatory;
+      }
+
+      .progress {
+        position: fixed;
+        inset: 0 0 auto 0;
+        height: 5px;
+        background: var(--gray-300);
+        z-index: 30;
+      }
+
+      .progress span {
+        display: block;
+        width: 14.286%;
+        height: 100%;
+        background: var(--clay);
+        transition: width 240ms ease;
+      }
+
+      .slide {
+        min-height: 100vh;
+        width: 100%;
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: clamp(72px, 9vh, 96px) clamp(24px, 6vw, 88px);
+      }
+
+      .slide-inner {
+        width: min(100%, 1040px);
+      }
+
+      .wide {
+        width: min(100%, 1160px);
+      }
+
+      .invert {
+        background: var(--slate);
+        color: var(--ivory);
+      }
+
+      .eyebrow {
+        color: var(--gray-500);
+        font-family: var(--mono);
+        font-size: 12px;
+        line-height: 1.4;
+        margin: 0 0 28px;
+        text-transform: uppercase;
+      }
+
+      .invert .eyebrow {
+        color: var(--gray-300);
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: var(--serif);
+        font-weight: 500;
+        letter-spacing: 0;
+      }
+
+      h1 {
+        font-size: clamp(44px, 6.4vw, 78px);
+        line-height: 1.04;
+        margin: 0 0 24px;
+        max-width: 920px;
+      }
+
+      h2 {
+        font-size: clamp(34px, 4.6vw, 56px);
+        line-height: 1.1;
+        margin: 0 0 42px;
+        max-width: 900px;
+      }
+
+      h3 {
+        font-size: clamp(22px, 2.1vw, 30px);
+        line-height: 1.18;
+        margin: 0 0 14px;
+      }
+
+      p {
+        font-size: clamp(17px, 1.45vw, 21px);
+        line-height: 1.58;
+        margin: 0;
+      }
+
+      .subtitle {
+        color: var(--gray-700);
+        max-width: 680px;
+      }
+
+      .invert .subtitle {
+        color: var(--gray-300);
+      }
+
+      .meta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px 28px;
+        margin-top: 56px;
+        color: var(--gray-500);
+        font-family: var(--mono);
+        font-size: 12px;
+      }
+
+      .ornament {
+        width: 58px;
+        height: 58px;
+        margin-bottom: 42px;
+      }
+
+      .ornament circle,
+      .ornament path {
+        vector-effect: non-scaling-stroke;
+      }
+
+      .grid-3,
+      .grid-2 {
+        display: grid;
+        gap: clamp(20px, 3vw, 34px);
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .grid-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .panel {
+        border-top: 1px solid var(--gray-300);
+        padding-top: 24px;
+      }
+
+      .invert .panel {
+        border-color: var(--gray-700);
+      }
+
+      .panel-label {
+        color: var(--gray-500);
+        font-family: var(--mono);
+        font-size: 12px;
+        line-height: 1.45;
+        margin-bottom: 14px;
+        text-transform: uppercase;
+      }
+
+      .panel p,
+      .runway p,
+      .check-list li {
+        color: var(--gray-700);
+        font-size: clamp(15px, 1.25vw, 18px);
+      }
+
+      .invert .panel p,
+      .invert .runway p {
+        color: var(--gray-300);
+      }
+
+      .accent {
+        color: var(--clay);
+      }
+
+      .workflow {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 12px;
+        align-items: stretch;
+      }
+
+      .step,
+      .runway,
+      .snippet,
+      .diagram {
+        border: 1px solid var(--gray-300);
+        background: rgba(255, 255, 255, 0.72);
+        border-radius: 8px;
+      }
+
+      .step {
+        min-height: 132px;
+        padding: 18px;
+        position: relative;
+      }
+
+      .invert .step {
+        background: #24221e;
+        border-color: #8c7f6d;
+        color: var(--ivory);
+      }
+
+      .invert .step::before {
+        background: var(--clay);
+        content: "";
+        height: 4px;
+        inset: 0 0 auto 0;
+        position: absolute;
+      }
+
+      .step-num {
+        color: var(--clay);
+        display: block;
+        font-family: var(--mono);
+        font-size: 12px;
+        margin-bottom: 20px;
+      }
+
+      .invert .step-num {
+        color: #f0b08f;
+        font-weight: 700;
+      }
+
+      .step-title {
+        display: block;
+        font-family: var(--serif);
+        font-size: clamp(19px, 1.9vw, 26px);
+        line-height: 1.15;
+        margin-bottom: 8px;
+      }
+
+      .step-note {
+        color: var(--gray-700);
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      .invert .step-title {
+        color: #ffffff;
+      }
+
+      .invert .step-note {
+        color: #eee7da;
+        font-size: 16px;
+        line-height: 1.55;
+      }
+
+      .arrow {
+        align-self: center;
+        color: var(--gray-500);
+        font-family: var(--mono);
+        font-size: 20px;
+        text-align: center;
+      }
+
+      .invert .arrow {
+        color: #f0b08f;
+        font-weight: 700;
+      }
+
+      .demo-map {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+        gap: clamp(24px, 4vw, 52px);
+        align-items: center;
+      }
+
+      .outcome-layout,
+      .visual-walkthrough,
+      .workshop-launch {
+        align-items: center;
+        display: grid;
+        gap: clamp(28px, 5vw, 64px);
+        grid-template-columns: minmax(0, 0.88fr) minmax(360px, 1.12fr);
+      }
+
+      .outcome-layout h1 {
+        font-size: clamp(44px, 5.7vw, 72px);
+      }
+
+      .media-frame {
+        background: var(--paper);
+        border: 1px solid var(--gray-300);
+        border-radius: 10px;
+        box-shadow: 0 18px 45px rgba(20, 20, 19, 0.09);
+        overflow: hidden;
+      }
+
+      .media-frame img {
+        display: block;
+        height: 100%;
+        object-fit: contain;
+        width: 100%;
+      }
+
+      .product-shot {
+        aspect-ratio: 16 / 11;
+        padding: 16px;
+      }
+
+      .fork-visuals {
+        display: grid;
+        gap: 16px;
+      }
+
+      .fork-context {
+        aspect-ratio: 1278 / 514;
+      }
+
+      .fork-zoom {
+        align-items: center;
+        background: #0d1117;
+        display: grid;
+        gap: 18px;
+        grid-template-columns: 1fr auto;
+        padding: 14px 18px;
+      }
+
+      .fork-zoom img {
+        height: auto;
+        width: min(100%, 390px);
+      }
+
+      .fork-zoom span {
+        color: var(--ivory);
+        font-family: var(--mono);
+        font-size: 12px;
+        line-height: 1.45;
+        text-transform: uppercase;
+      }
+
+      .editor-shot {
+        aspect-ratio: 1052 / 506;
+      }
+
+      .commit-shot {
+        aspect-ratio: 351 / 369;
+        justify-self: center;
+        max-height: 470px;
+        max-width: 450px;
+        width: 100%;
+      }
+
+      .pages-shot {
+        aspect-ratio: 949 / 181;
+        margin-top: 32px;
+      }
+
+      .action-steps {
+        display: grid;
+        gap: clamp(22px, 4vw, 46px);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .action-step {
+        border-top: 3px solid var(--clay);
+        padding-top: 18px;
+      }
+
+      .action-step span {
+        color: var(--clay);
+        display: block;
+        font-family: var(--mono);
+        font-size: 12px;
+        margin-bottom: 12px;
+        text-transform: uppercase;
+      }
+
+      .action-step p {
+        color: var(--gray-700);
+        font-size: clamp(15px, 1.2vw, 18px);
+      }
+
+      .delivery-options {
+        display: grid;
+        gap: 26px;
+        margin-top: 0;
+      }
+
+      .delivery-layout {
+        align-items: start;
+        display: grid;
+        gap: clamp(30px, 5vw, 60px);
+        grid-template-columns: minmax(0, 0.82fr) minmax(380px, 1.18fr);
+      }
+
+      .delivery-option {
+        border-top: 3px solid var(--clay);
+        padding-top: 18px;
+      }
+
+      .delivery-option span {
+        color: var(--clay);
+        display: block;
+        font-family: var(--mono);
+        font-size: 12px;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+      }
+
+      .delivery-option p {
+        color: var(--gray-700);
+        font-size: clamp(15px, 1.2vw, 18px);
+      }
+
+      .delivery-option code {
+        color: var(--blue);
+        font-family: var(--mono);
+        font-size: 0.94em;
+      }
+
+      .pages-note {
+        border-top: 1px solid var(--gray-300);
+        color: var(--gray-700);
+        font-size: 15px;
+        line-height: 1.5;
+        margin-top: 24px;
+        padding-top: 18px;
+      }
+
+      .plain-flow {
+        display: grid;
+        gap: 0;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .session-plan {
+        display: grid;
+        gap: clamp(20px, 3vw, 34px);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .session-phase {
+        border-top: 3px solid var(--clay);
+        padding-top: 20px;
+      }
+
+      .session-phase span {
+        color: var(--clay);
+        display: block;
+        font-family: var(--mono);
+        font-size: 12px;
+        margin-bottom: 14px;
+        text-transform: uppercase;
+      }
+
+      .session-phase h3 {
+        margin-bottom: 10px;
+      }
+
+      .session-phase p {
+        color: var(--gray-700);
+        font-size: clamp(15px, 1.15vw, 17px);
+      }
+
+      .outcomes {
+        border-left: 4px solid var(--clay);
+        margin-top: 34px;
+        padding: 4px 0 4px 22px;
+      }
+
+      .outcomes strong {
+        display: block;
+        font-family: var(--serif);
+        font-size: clamp(20px, 1.8vw, 26px);
+        font-weight: 500;
+        margin-bottom: 8px;
+      }
+
+      .outcomes p {
+        color: var(--gray-700);
+        font-size: clamp(15px, 1.15vw, 17px);
+      }
+
+      .login-prompt {
+        border-left: 4px solid var(--clay);
+        margin-top: 34px;
+        max-width: 720px;
+        padding: 4px 0 4px 22px;
+      }
+
+      .login-prompt strong {
+        display: block;
+        font-family: var(--serif);
+        font-size: clamp(20px, 1.8vw, 26px);
+        font-weight: 500;
+        margin-bottom: 7px;
+      }
+
+      .login-prompt p {
+        color: var(--gray-700);
+        font-size: clamp(15px, 1.15vw, 17px);
+      }
+
+      .login-prompt a {
+        color: var(--blue);
+        font-family: var(--mono);
+        font-weight: 700;
+      }
+
+      .belief-grid {
+        display: grid;
+        gap: clamp(30px, 5vw, 70px);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .belief-grid .panel {
+        border-color: #8c7f6d;
+      }
+
+      .belief-grid ul {
+        list-style: none;
+        margin: 18px 0 0;
+        padding: 0;
+      }
+
+      .belief-grid li {
+        border-top: 1px solid var(--gray-700);
+        color: #eee7da;
+        font-size: clamp(16px, 1.25vw, 19px);
+        line-height: 1.45;
+        padding: 13px 0;
+      }
+
+      .reframe-line {
+        border-top: 1px solid #8c7f6d;
+        color: var(--ivory);
+        font-family: var(--serif);
+        font-size: clamp(22px, 2.2vw, 31px);
+        line-height: 1.35;
+        margin-top: 34px;
+        padding-top: 22px;
+      }
+
+      #slide-4 .reframe-line {
+        color: var(--slate);
+      }
+
+      .solution-flow {
+        display: grid;
+        gap: 0;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+      }
+
+      .solution-step {
+        border-top: 3px solid var(--clay);
+        padding: 20px 28px 0 0;
+        position: relative;
+      }
+
+      .solution-step:not(:last-child)::after {
+        color: var(--gray-300);
+        content: "\2192";
+        font-family: var(--mono);
+        font-size: 24px;
+        position: absolute;
+        right: 10px;
+        top: 48px;
+      }
+
+      .solution-step span {
+        color: var(--clay);
+        display: block;
+        font-family: var(--mono);
+        font-size: 12px;
+        margin-bottom: 16px;
+        text-transform: uppercase;
+      }
+
+      .solution-step strong {
+        display: block;
+        font-family: var(--serif);
+        font-size: clamp(20px, 1.9vw, 27px);
+        font-weight: 500;
+        margin-bottom: 8px;
+      }
+
+      .solution-step p {
+        color: var(--gray-700);
+        font-size: clamp(14px, 1.1vw, 16px);
+        line-height: 1.48;
+      }
+
+      .plain-action {
+        border-top: 3px solid var(--clay);
+        padding: 22px 24px 0 0;
+        position: relative;
+      }
+
+      .plain-action:not(:last-child)::after {
+        color: var(--gray-300);
+        content: "\2192";
+        font-family: var(--mono);
+        font-size: 26px;
+        position: absolute;
+        right: 18px;
+        top: 48px;
+      }
+
+      .plain-action strong {
+        display: block;
+        font-family: var(--serif);
+        font-size: clamp(22px, 2.2vw, 30px);
+        font-weight: 500;
+        margin-bottom: 10px;
+      }
+
+      .plain-action span {
+        color: var(--gray-700);
+        display: block;
+        font-size: clamp(15px, 1.2vw, 18px);
+        line-height: 1.5;
+        max-width: 210px;
+      }
+
+      .invert .plain-action span,
+      .invert .phase p {
+        color: #eee7da;
+      }
+
+      .invert .plain-action {
+        border-color: var(--clay);
+      }
+
+      .term-list {
+        counter-reset: terms;
+        display: grid;
+        gap: 0;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+      }
+
+      .term {
+        border-left: 1px solid var(--gray-300);
+        min-height: 220px;
+        padding: 0 clamp(16px, 2vw, 26px);
+      }
+
+      .term:first-child {
+        border-left: 0;
+        padding-left: 0;
+      }
+
+      .term::before {
+        color: var(--clay);
+        content: "0" counter(terms);
+        counter-increment: terms;
+        display: block;
+        font-family: var(--mono);
+        font-size: 12px;
+        margin-bottom: 22px;
+      }
+
+      .term dt {
+        font-family: var(--serif);
+        font-size: clamp(21px, 2vw, 28px);
+        margin-bottom: 10px;
+      }
+
+      .term dd {
+        color: var(--gray-700);
+        font-size: clamp(14px, 1.15vw, 17px);
+        line-height: 1.5;
+        margin: 0;
+      }
+
+      .choice-note {
+        border-top: 1px solid var(--gray-300);
+        color: var(--gray-700);
+        font-size: 16px;
+        margin-top: 30px;
+        padding-top: 20px;
+      }
+
+      .workshop-steps {
+        display: grid;
+        gap: 24px;
+        margin-top: clamp(28px, 5vh, 48px);
+        max-width: 520px;
+      }
+
+      .workshop-step {
+        border-top: 3px solid var(--clay);
+        display: grid;
+        gap: 8px 22px;
+        grid-template-columns: 110px minmax(0, 1fr);
+        padding-top: 18px;
+      }
+
+      .workshop-step span {
+        color: var(--clay);
+        display: block;
+        font-family: var(--mono);
+        font-size: 12px;
+        grid-row: 1 / span 2;
+        padding-top: 6px;
+        text-transform: uppercase;
+      }
+
+      .workshop-step h3,
+      .workshop-step p {
+        margin: 0;
+      }
+
+      .workshop-step p {
+        font-size: clamp(15px, 1.2vw, 18px);
+      }
+
+      .success-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .success-list li {
+        border-top: 1px solid var(--gray-300);
+        font-size: clamp(17px, 1.45vw, 21px);
+        line-height: 1.45;
+        padding: 15px 0 15px 34px;
+        position: relative;
+      }
+
+      .success-list li::before {
+        color: var(--olive);
+        content: "\2713";
+        font-family: var(--mono);
+        left: 0;
+        position: absolute;
+      }
+
+      .fallback {
+        border-left: 4px solid var(--clay);
+        margin-top: 26px;
+        padding: 4px 0 4px 22px;
+      }
+
+      .fallback p {
+        color: var(--gray-700);
+        font-size: 16px;
+      }
+
+      .launch-code {
+        align-items: center;
+        aspect-ratio: 1;
+        background: var(--paper);
+        border: 2px dashed var(--gray-300);
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        max-width: 330px;
+        padding: 28px;
+        text-align: center;
+      }
+
+      .launch-code img {
+        display: block;
+        height: auto;
+        max-width: 250px;
+        width: 100%;
+      }
+
+      .launch-code strong {
+        color: var(--clay);
+        font-family: var(--mono);
+        font-size: 13px;
+        text-transform: uppercase;
+      }
+
+      .launch-code span {
+        color: var(--gray-500);
+        font-size: 15px;
+        line-height: 1.45;
+        margin-top: 14px;
+      }
+
+      .launch-url {
+        color: var(--slate);
+        display: block;
+        font-family: var(--mono);
+        font-size: 17px;
+        font-weight: 700;
+        margin-top: 14px;
+        overflow-wrap: anywhere;
+      }
+
+      .workshop-launch-centered {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        margin-inline: auto;
+        max-width: 920px;
+        text-align: center;
+      }
+
+      .workshop-launch-centered h2 {
+        font-size: clamp(34px, 4vw, 50px);
+        margin-bottom: 14px;
+        max-width: 820px;
+      }
+
+      .workshop-launch-centered .subtitle {
+        line-height: 1.42;
+        max-width: 760px;
+      }
+
+      .workshop-launch-centered .launch-code {
+        aspect-ratio: auto;
+        margin-top: 20px;
+        max-width: 340px;
+        padding: 16px 22px;
+        width: min(100%, 340px);
+      }
+
+      .workshop-launch-centered .launch-code img {
+        max-width: 170px;
+      }
+
+      .workshop-launch-centered .launch-url {
+        font-size: clamp(13px, 1.2vw, 17px);
+        margin-top: 8px;
+      }
+
+      .workshop-launch-centered .launch-code span {
+        font-size: 13px;
+        margin-top: 8px;
+      }
+
+      .handoff-check {
+        border-top: 1px solid #8c7f6d;
+        color: #eee7da;
+        font-size: 16px;
+        margin-top: 18px;
+        padding-top: 12px;
+        width: min(100%, 720px);
+      }
+
+      #slide-1,
+      #slide-7 {
+        padding-block: 44px;
+      }
+
+      #slide-1 h1 {
+        font-size: clamp(42px, 5.5vw, 70px);
+        margin-bottom: 18px;
+      }
+
+      #slide-1 .login-prompt {
+        margin-top: 22px;
+      }
+
+      #slide-1 .meta-row {
+        margin-top: 24px;
+      }
+
+      #slide-7 h2 {
+        margin-bottom: 26px;
+      }
+
+      #slide-7 .runway {
+        padding: 24px 30px;
+      }
+
+      #slide-7 .runway ol {
+        margin-top: 14px;
+      }
+
+      #slide-7 .runway li {
+        padding: 10px 0;
+      }
+
+      #slide-7 .choice-note {
+        margin-top: 18px;
+        padding-top: 14px;
+      }
+
+      #slide-8 h2,
+      #slide-9 h2,
+      #slide-10 h2,
+      #slide-11 h2 {
+        margin-bottom: 28px;
+      }
+
+      .diagram {
+        padding: 24px;
+      }
+
+      .browser-frame {
+        border: 1px solid var(--gray-300);
+        border-radius: 8px;
+        overflow: hidden;
+        background: var(--paper);
+      }
+
+      .browser-bar {
+        display: flex;
+        gap: 8px;
+        padding: 12px 14px;
+        border-bottom: 1px solid var(--gray-150);
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--gray-300);
+      }
+
+      .file-row {
+        align-items: center;
+        border-bottom: 1px solid var(--gray-150);
+        display: grid;
+        grid-template-columns: 88px 1fr;
+        gap: 14px;
+        padding: 14px;
+      }
+
+      .file-key {
+        border: 1px solid var(--gray-300);
+        border-radius: 6px;
+        color: var(--clay);
+        font-family: var(--mono);
+        font-size: 13px;
+        padding: 8px 10px;
+        text-align: center;
+      }
+
+      .file-label {
+        color: var(--gray-700);
+        font-size: 15px;
+      }
+
+      .runway {
+        padding: clamp(24px, 3vw, 34px);
+      }
+
+      .runway ol,
+      .check-list {
+        list-style: none;
+        margin: 24px 0 0;
+        padding: 0;
+      }
+
+      .runway li,
+      .check-list li {
+        border-top: 1px solid var(--gray-150);
+        padding: 14px 0;
+      }
+
+      .runway li:first-child,
+      .check-list li:first-child {
+        border-top: 0;
+      }
+
+      .runway strong {
+        color: var(--slate);
+        display: block;
+        font-family: var(--mono);
+        font-size: 12px;
+        margin-bottom: 6px;
+        text-transform: uppercase;
+      }
+
+      .snippet {
+        background: #11110f;
+        color: var(--ivory);
+        font-family: var(--mono);
+        font-size: clamp(12px, 1.15vw, 15px);
+        line-height: 1.7;
+        overflow-x: auto;
+        padding: clamp(18px, 3vw, 30px);
+        white-space: pre;
+      }
+
+      .resource-strip {
+        border-top: 1px solid var(--gray-300);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px 32px;
+        margin-top: 42px;
+        padding-top: 24px;
+      }
+
+      .resource-strip span {
+        color: var(--gray-500);
+        font-family: var(--mono);
+        font-size: 12px;
+      }
+
+      .invert .resource-strip {
+        border-color: #8c7f6d;
+      }
+
+      .invert .resource-strip span {
+        color: #eee7da;
+        font-size: 13px;
+      }
+
+      kbd {
+        border: 1px solid var(--gray-300);
+        border-radius: 6px;
+        box-shadow: inset 0 -1px 0 var(--gray-300);
+        color: var(--clay);
+        font-family: var(--mono);
+        font-size: 0.9em;
+        padding: 2px 7px;
+      }
+
+      #counter {
+        bottom: 22px;
+        color: var(--gray-500);
+        font-family: var(--mono);
+        font-size: 12px;
+        position: fixed;
+        right: 28px;
+        z-index: 30;
+      }
+
+      .sr-only {
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        height: 1px;
+        overflow: hidden;
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: translateY(0);
+        transition:
+          opacity 500ms ease,
+          transform 500ms ease;
+      }
+
+      .slide:not(.active) .reveal {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      .active .reveal:nth-child(2) {
+        transition-delay: 80ms;
+      }
+      .active .reveal:nth-child(3) {
+        transition-delay: 160ms;
+      }
+      .active .reveal:nth-child(4) {
+        transition-delay: 240ms;
+      }
+      .active .reveal:nth-child(5) {
+        transition-delay: 320ms;
+      }
+
+      .fill-bar {
+        background: var(--gray-150);
+        height: 8px;
+        margin-top: 16px;
+        overflow: hidden;
+        border-radius: 999px;
+      }
+
+      .fill-bar span {
+        display: block;
+        height: 100%;
+        width: 0;
+        background: var(--olive);
+        transition: width 800ms ease 300ms;
+      }
+
+      .active .fill-bar span {
+        width: var(--value);
+      }
+
+      @media (max-width: 860px) {
+        body {
+          scroll-snap-type: none;
+        }
+
+        .slide {
+          align-items: flex-start;
+          padding: 72px 22px 86px;
+        }
+
+        .grid-3,
+        .grid-2,
+        .demo-map,
+        .workflow,
+        .outcome-layout,
+        .visual-walkthrough,
+        .workshop-launch,
+        .plain-flow,
+        .session-plan,
+        .belief-grid,
+        .solution-flow,
+        .term-list,
+        .delivery-layout,
+        .delivery-options {
+          grid-template-columns: 1fr;
+        }
+
+        .workshop-step {
+          grid-template-columns: 1fr;
+        }
+
+        .workshop-step span {
+          grid-row: auto;
+          padding-top: 0;
+        }
+
+        .action-steps,
+        .fork-zoom {
+          grid-template-columns: 1fr;
+        }
+
+        .commit-shot {
+          max-height: none;
+          max-width: 390px;
+        }
+
+        .term {
+          border-left: 0;
+          border-top: 1px solid var(--gray-300);
+          min-height: 0;
+          padding: 18px 0;
+        }
+
+        .plain-action:not(:last-child)::after {
+          display: none;
+        }
+
+        .solution-step:not(:last-child)::after {
+          display: none;
+        }
+
+        .arrow {
+          display: none;
+        }
+
+      .meta-row,
+      .resource-strip {
+        gap: 12px;
+      }
+
+      .slide:not(.active) .reveal,
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+
+      #counter {
+        bottom: 14px;
+        right: 18px;
+      }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+          transition-duration: 1ms !important;
+          animation-duration: 1ms !important;
+        }
+
+        .reveal {
+          opacity: 1;
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="progress" aria-hidden="true">
+      <span id="progressFill"></span>
+    </div>
+    <div id="counter" aria-hidden="true">1 / 7</div>
+    <div
+      class="sr-only"
+      aria-live="polite"
+      aria-atomic="true"
+      id="announcer"
+    ></div>
+
+    <main>
+      <section class="slide active" id="slide-1" aria-label="Session promise and GitHub sign-in prompt">
+        <div class="slide-inner wide outcome-layout">
+          <div>
+            <p class="eyebrow reveal">OLC Accelerate 2026 / GitHub for instructional designers</p>
+            <h1 class="reveal">Today, you will make something like this.</h1>
+            <p class="subtitle reveal">
+              A useful, accessible LMS interaction—created in a browser, with
+              AI support, and without becoming a programmer.
+            </p>
+            <div class="login-prompt reveal">
+              <strong>Before we begin, sign in to GitHub.</strong>
+              <p>On your laptop, open <a href="https://github.com/login">github.com/login</a>. Use whichever sign-in method is fastest; a .edu address is not required.</p>
+            </div>
+            <div class="meta-row reveal">
+              <span>Anna Everett and Jian Su</span>
+              <span>University of Tennessee, Knoxville</span>
+              <span>orientation + live demonstration</span>
+            </div>
+          </div>
+          <div class="media-frame product-shot reveal">
+            <img
+              src="01-finished-lms-accordion.png"
+              alt="Course Syllabus Highlights accordion with Course Overview expanded and five additional sections collapsed"
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" id="slide-2" aria-label="Session plan and outcome">
+        <div class="slide-inner wide">
+          <p class="eyebrow reveal">What we will do today</p>
+          <h2 class="reveal">A short orientation. A live build. A reusable workflow.</h2>
+          <div class="session-plan reveal">
+            <div class="session-phase">
+              <span>01 / orient</span>
+              <h3>See the possibility</h3>
+              <p>See where GitHub fits in an instructional design workflow.</p>
+            </div>
+            <div class="session-phase">
+              <span>02 / watch</span>
+              <h3>Follow the workflow</h3>
+              <p>Watch a fork become an edited, published webpage.</p>
+            </div>
+            <div class="session-phase">
+              <span>03 / apply</span>
+              <h3>Deliver to Canvas</h3>
+              <p>Choose direct-paste HTML or a hosted iframe.</p>
+            </div>
+          </div>
+          <div class="outcomes reveal">
+            <strong>By the end, you can explain and repeat the five-step workflow.</strong>
+            <p>Fork → edit → commit → publish → deliver to Canvas.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" id="slide-3" aria-label="Essential GitHub vocabulary">
+        <div class="slide-inner wide">
+          <p class="eyebrow reveal">Five words are enough to begin</p>
+          <h2 class="reveal">GitHub is an online project folder with a memory.</h2>
+          <dl class="term-list reveal">
+            <div class="term">
+              <dt>Repository</dt>
+              <dd>The project folder stored online.</dd>
+            </div>
+            <div class="term">
+              <dt>Fork</dt>
+              <dd>Your own safe copy of that folder.</dd>
+            </div>
+            <div class="term">
+              <dt>Editor</dt>
+              <dd>The browser workspace where you make changes.</dd>
+            </div>
+            <div class="term">
+              <dt>Commit</dt>
+              <dd>A named save point you can return to.</dd>
+            </div>
+            <div class="term">
+              <dt>Pages</dt>
+              <dd>The feature that turns your project into a webpage.</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="slide" id="slide-4" aria-label="Why GitHub is useful for instructional designers">
+        <div class="slide-inner wide">
+          <p class="eyebrow reveal">Why this workflow matters</p>
+          <h2 class="reveal">Your design idea should not stop at the edge of the LMS editor.</h2>
+          <div class="grid-3">
+            <article class="panel reveal">
+              <div class="panel-label">LMS editor</div>
+              <h3>Reliable, but limited</h3>
+              <p>Useful interaction ideas can collapse into static text and long pages.</p>
+            </article>
+            <article class="panel reveal">
+              <div class="panel-label">Authoring suite</div>
+              <h3>Capable, but heavy</h3>
+              <p>Licenses and packaged exports can make small changes costly or slow.</p>
+            </article>
+            <article class="panel reveal">
+              <div class="panel-label">GitHub + AI</div>
+              <h3>Flexible and reachable</h3>
+              <p>A browser-based workspace makes small, testable webpages easier to build and revise.</p>
+            </article>
+          </div>
+          <p class="reframe-line reveal">You already design, test, revise, and document. GitHub gives those habits a safe project history.</p>
+        </div>
+      </section>
+
+      <section class="slide" id="slide-5" aria-label="Five-step GitHub workflow">
+        <div class="slide-inner wide">
+          <p class="eyebrow reveal">The live demonstration map</p>
+          <h2 class="reveal">Five actions turn the starter into your own live webpage.</h2>
+          <div class="solution-flow reveal">
+            <div class="solution-step">
+              <span>01 / copy</span>
+              <strong>Fork</strong>
+              <p>Make a safe copy in your account.</p>
+            </div>
+            <div class="solution-step">
+              <span>02 / change</span>
+              <strong>Edit</strong>
+              <p>Press <kbd>.</kbd> and update <code>index.html</code>.</p>
+            </div>
+            <div class="solution-step">
+              <span>03 / save</span>
+              <strong>Commit</strong>
+              <p>Name and save the new version.</p>
+            </div>
+            <div class="solution-step">
+              <span>04 / publish</span>
+              <strong>Pages</strong>
+              <p>Publish from <code>main</code> and <code>/(root)</code>.</p>
+            </div>
+            <div class="solution-step">
+              <span>05 / deliver</span>
+              <strong>Canvas</strong>
+              <p>Paste the HTML or embed the live page.</p>
+            </div>
+          </div>
+          <div class="resource-strip reveal">
+            <span>Su demonstrates the workflow live.</span>
+            <span>Anna circulates if you get stuck.</span>
+            <span>Questions are welcome after the full sequence.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" id="slide-6" aria-label="Two ways to deliver the interaction in Canvas">
+        <div class="slide-inner wide">
+          <p class="eyebrow reveal">Two Canvas delivery options</p>
+          <h2 class="reveal">Paste the accordion itself—or embed the hosted page.</h2>
+          <div class="delivery-layout reveal">
+            <div class="delivery-options">
+              <div class="delivery-option">
+                <span>Option A / direct paste</span>
+                <h3>Use the accordion builder’s HTML</h3>
+                <p>Select <strong>Copy Canvas-ready HTML</strong>, then paste it into Canvas’s HTML editor. No iframe is needed.</p>
+              </div>
+              <div class="delivery-option">
+                <span>Option B / hosted page</span>
+                <h3>Embed your GitHub Pages URL</h3>
+                <p>Replace <code>YOUR_GITHUB_PAGES_URL</code> in the example, then paste the iframe into Canvas’s HTML editor.</p>
+              </div>
+            </div>
+            <div>
+              <pre class="snippet" aria-label="Example iframe code"><code>&lt;iframe
+  src="YOUR_GITHUB_PAGES_URL"
+  title="Interactive course content"
+  style="width:100%; min-height:650px; border:0;"
+  loading="lazy"&gt;
+&lt;/iframe&gt;</code></pre>
+              <p class="pages-note"><strong>Pages setup:</strong> Settings → Pages → Deploy from a branch → <code>main</code> → <code>/(root)</code>. Free accounts publish Pages from public repositories; private-repository publishing requires a supported paid or organizational plan. Follow your institution’s Canvas embedding policy.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide invert" id="slide-7" aria-label="Live demonstration handoff and participant repository">
+        <div class="slide-inner workshop-launch-centered">
+          <p class="eyebrow reveal">Ready for the live demonstration?</p>
+          <h2 class="reveal">Signed in? Open the starter repository.</h2>
+          <p class="subtitle reveal">On a laptop, enter the web address. On a phone, scan the code to follow along or save the repository for later.</p>
+          <div class="launch-code reveal">
+            <strong>Participant repository</strong>
+            <img
+              src="qr-code.png"
+              alt="QR code for the participant workshop repository at tiny.utk.edu/olc-github"
+            >
+            <a class="launch-url" href="https://tiny.utk.edu/olc-github">tiny.utk.edu/olc-github</a>
+            <span>Scan to open the participant repository.</span>
+          </div>
+          <p class="handoff-check reveal">Before we hand off: confirm that GitHub shows your profile image in the upper-right corner. If not, raise your hand and we will help.</p>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      (function () {
+        const slides = Array.from(document.querySelectorAll(".slide"));
+        const counter = document.getElementById("counter");
+        const announcer = document.getElementById("announcer");
+        const progressFill = document.getElementById("progressFill");
+        let current = 0;
+        let touchStartY = 0;
+
+        function update(index) {
+          current = Math.max(0, Math.min(slides.length - 1, index));
+          slides.forEach((slide, i) =>
+            slide.classList.toggle("active", i === current),
+          );
+          counter.textContent = `${current + 1} / ${slides.length}`;
+          progressFill.style.width = `${((current + 1) / slides.length) * 100}%`;
+          announcer.textContent = `Slide ${current + 1} of ${slides.length}`;
+        }
+
+        function go(index) {
+          const target = Math.max(0, Math.min(slides.length - 1, index));
+          slides[target].scrollIntoView({ behavior: "smooth", block: "start" });
+          update(target);
+        }
+
+        document.addEventListener("keydown", (event) => {
+          const nextKeys = ["ArrowRight", "ArrowDown", "PageDown", " "];
+          const prevKeys = ["ArrowLeft", "ArrowUp", "PageUp"];
+          if (nextKeys.includes(event.key)) {
+            event.preventDefault();
+            go(current + 1);
+          }
+          if (prevKeys.includes(event.key)) {
+            event.preventDefault();
+            go(current - 1);
+          }
+          if (event.key === "Home") {
+            event.preventDefault();
+            go(0);
+          }
+          if (event.key === "End") {
+            event.preventDefault();
+            go(slides.length - 1);
+          }
+        });
+
+        document.addEventListener(
+          "touchstart",
+          (event) => {
+            touchStartY = event.touches[0].clientY;
+          },
+          { passive: true },
+        );
+
+        document.addEventListener(
+          "touchend",
+          (event) => {
+            const delta = touchStartY - event.changedTouches[0].clientY;
+            if (Math.abs(delta) > 64) {
+              go(current + (delta > 0 ? 1 : -1));
+            }
+          },
+          { passive: true },
+        );
+
+        let scrollTicking = false;
+
+        function updateFromViewport() {
+          const center = window.innerHeight * 0.45;
+          let bestIndex = 0;
+          let bestDistance = Number.POSITIVE_INFINITY;
+
+          slides.forEach((slide, index) => {
+            const rect = slide.getBoundingClientRect();
+            if (rect.top <= center && rect.bottom >= center) {
+              bestIndex = index;
+              bestDistance = 0;
+              return;
+            }
+            const distance = Math.min(Math.abs(rect.top), Math.abs(rect.bottom));
+            if (distance < bestDistance) {
+              bestDistance = distance;
+              bestIndex = index;
+            }
+          });
+
+          update(bestIndex);
+        }
+
+        window.addEventListener(
+          "scroll",
+          () => {
+            if (scrollTicking) return;
+            scrollTicking = true;
+            window.requestAnimationFrame(() => {
+              updateFromViewport();
+              scrollTicking = false;
+            });
+          },
+          { passive: true },
+        );
+
+        const hashTarget = window.location.hash
+          ? document.querySelector(window.location.hash)
+          : null;
+        const hashIndex = slides.indexOf(hashTarget);
+        update(hashIndex >= 0 ? hashIndex : 0);
+        window.requestAnimationFrame(updateFromViewport);
+      })();
+    </script>
+  </body>
+</html>
