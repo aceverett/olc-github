@@ -2,9 +2,14 @@
 
 This repository contains the participant materials for the OLC Accelerate 2026 session **GitHub Is for Instructional Designers, Too**.
 
+## What is included
+
+- `index.html` — the interactive webpage you will fork, edit, and embed into your LMS
+- `slides/` — our conference presentation
+
 ## Start here
 
-- [Open the LMS accordion builder]
+- [Open the example interactive webpage](aceverett.github.io/olc-github/)
 - [Open the presentation slides]
 
 ## Workshop steps
@@ -31,11 +36,7 @@ Copy and paste the iframe code below into the HTML editor in your LMS. Insert th
   loading="lazy">
 </iframe>
 ```
-
-## What is included
-
-- `index.html` — the interactive webpage you will fork, edit, and embed into your LMS
-- `slides/` — our conference presentation
+This will allow your Github Page to load as an embedded webpage inside your LMS.
 
 ## Questions?
 Email Anna Everett (everetta@utk.edu) or Jian Su (jsu1@utk.edu). 
