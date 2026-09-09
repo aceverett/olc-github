@@ -15,7 +15,7 @@ browser tabs.
 
 **Preferred ratio:** 16:10
 
-Capture a Canvas, Blackboard, Brightspace, or Moodle course page containing the
+Capture a course page in your institution’s LMS containing the
 finished accordion. Open one accordion section so the interaction is obvious.
 Include enough LMS interface to establish context, but crop out course and
 student information.

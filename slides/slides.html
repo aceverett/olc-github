@@ -50,7 +50,7 @@
 
       .progress span {
         display: block;
-        width: 14.286%;
+        width: 12.5%;
         height: 100%;
         background: var(--clay);
         transition: width 240ms ease;
@@ -1211,6 +1211,15 @@
 .workshop-nav a:focus-visible { outline:3px solid #315c7c; outline-offset:3px; }
 
 @media print { .workshop-nav { display:none; } }
+
+      #slide-1 { min-height:calc(100vh - 69px); }
+      #slide-1 h1 { overflow-wrap:anywhere; max-width:1100px; font-size:clamp(36px,4.4vw,62px); line-height:1.08; }
+      #slide-1 .eyebrow { margin-bottom:22px; }
+      #slide-1 .presenter-credit { margin:24px 0 28px; }
+      #slide-1 .presenter-credit p { font-size:20px; color:var(--gray-700); }
+      #slide-1 .login-prompt { max-width:960px; }
+      #slide-1 .login-prompt p { font-size:18px; line-height:1.5; margin-top:8px; }
+      #activity-intro h2 { overflow-wrap:anywhere; max-width:1120px; font-size:clamp(34px,4.3vw,60px); line-height:1.2; margin:0; }
 </style>
   </head>
   <body>
@@ -1218,7 +1227,7 @@
     <div class="progress" aria-hidden="true">
       <span id="progressFill"></span>
     </div>
-    <div id="counter" aria-hidden="true">1 / 7</div>
+    <div id="counter" aria-hidden="true">1 / 8</div>
     <div
       class="sr-only"
       aria-live="polite"
@@ -1227,31 +1236,25 @@
     ></div>
 
     <main>
-      <section class="slide active" id="slide-1" aria-label="Session promise and GitHub sign-in prompt">
-        <div class="slide-inner wide outcome-layout">
-          <div>
-            <p class="eyebrow reveal">OLC Accelerate 2026 / GitHub for instructional designers</p>
-            <h1 class="reveal">Today, you will make something like this.</h1>
-            <p class="subtitle reveal">
-              A useful, accessible LMS interaction—created in a browser, with
-              AI support, and without becoming a programmer.
-            </p>
-            <div class="login-prompt reveal">
-              <strong>Before we begin, sign in to GitHub.</strong>
-              <p>On your laptop, open <a href="https://github.com/login">github.com/login</a>. Use whichever sign-in method is fastest; a .edu address is not required.</p>
-            </div>
-            <div class="meta-row reveal">
-              <span>Anna Everett and Jian Su</span>
-              <span>University of Tennessee, Knoxville</span>
-              <span>orientation + live demonstration</span>
-            </div>
+      <section class="slide active" id="slide-1" aria-label="Presentation title and GitHub sign-in">
+        <div class="slide-inner wide">
+          <p class="eyebrow reveal">OLC Accelerate 2026</p>
+          <h1 class="reveal">GitHub is for IDs, Too: Using Free Developer Tools to Build Custom LMS Interactives.</h1>
+          <div class="presenter-credit reveal">
+            <p>Anna Everett and Jian Su</p>
+            <p>University of Tennessee</p>
           </div>
-          <div class="media-frame product-shot reveal">
-            <img
-              src="01-finished-lms-accordion.png"
-              alt="Course Syllabus Highlights accordion with Course Overview expanded and five additional sections collapsed"
-            >
+          <div class="login-prompt reveal">
+            <strong>Before we begin, sign in to GitHub.</strong>
+            <p>On your laptop, open <a href="https://github.com/login">github.com/login</a>.</p>
+            <p>Use your .edu address if available. If it’s linked to Google, choose <b>Continue with Google</b>. If your .edu sign-in doesn’t work—or you don’t have one—use a personal Google account instead.</p>
           </div>
+        </div>
+      </section>
+
+      <section class="slide" id="activity-intro" aria-label="Introduction to the instructional activity">
+        <div class="slide-inner wide">
+          <h2 class="reveal">Today, we will show you how to use GitHub to modify and reuse a vibe-coded instructional activity that you can embed in your own LMS.</h2>
         </div>
       </section>
 
@@ -1272,13 +1275,13 @@
             </div>
             <div class="session-phase">
               <span>03 / apply</span>
-              <h3>Deliver to Canvas</h3>
+              <h3>Deliver to your LMS</h3>
               <p>Choose direct-paste HTML or a hosted iframe.</p>
             </div>
           </div>
           <div class="outcomes reveal">
             <strong>By the end, you can explain and repeat the five-step workflow.</strong>
-            <p>Fork → edit → commit → publish → deliver to Canvas.</p>
+            <p>Fork → edit → commit → publish → deliver to your LMS.</p>
           </div>
         </div>
       </section>
@@ -1364,7 +1367,7 @@
             </div>
             <div class="solution-step">
               <span>05 / deliver</span>
-              <strong>Canvas</strong>
+              <strong>Your LMS</strong>
               <p>Paste the HTML or embed the live page.</p>
             </div>
           </div>
@@ -1376,21 +1379,21 @@
         </div>
       </section>
 
-      <section class="slide" id="slide-6" aria-label="Two ways to deliver the interaction in Canvas">
+      <section class="slide" id="slide-6" aria-label="Two ways to deliver the interaction in your LMS">
         <div class="slide-inner wide">
-          <p class="eyebrow reveal">Two Canvas delivery options</p>
+          <p class="eyebrow reveal">Two LMS delivery options</p>
           <h2 class="reveal">Paste the accordion itself—or embed the hosted page.</h2>
           <div class="delivery-layout reveal">
             <div class="delivery-options">
               <div class="delivery-option">
                 <span>Option A / direct paste</span>
                 <h3>Use the accordion builder’s HTML</h3>
-                <p>Select <strong>Copy Canvas-ready HTML</strong>, then paste it into Canvas’s HTML editor. No iframe is needed.</p>
+                <p>Copy the generated HTML, then paste it into your LMS’s HTML editor, if supported. Test that the interaction works after saving.</p>
               </div>
               <div class="delivery-option">
                 <span>Option B / hosted page</span>
                 <h3>Embed your GitHub Pages URL</h3>
-                <p>Replace <code>YOUR_GITHUB_PAGES_URL</code> in the example, then paste the iframe into Canvas’s HTML editor.</p>
+                <p>Replace <code>YOUR_GITHUB_PAGES_URL</code> in the example, then paste the iframe into your LMS’s HTML editor or embed tool, if supported.</p>
               </div>
             </div>
             <div>
@@ -1400,7 +1403,7 @@
   style="width:100%; min-height:650px; border:0;"
   loading="lazy"&gt;
 &lt;/iframe&gt;</code></pre>
-              <p class="pages-note"><strong>Pages setup:</strong> Settings → Pages → Deploy from a branch → <code>main</code> → <code>/(root)</code>. Free accounts publish Pages from public repositories; private-repository publishing requires a supported paid or organizational plan. Follow your institution’s Canvas embedding policy.</p>
+              <p class="pages-note"><strong>Pages setup:</strong> Settings → Pages → Deploy from a branch → <code>main</code> → <code>/(root)</code>. Free accounts publish Pages from public repositories; private-repository publishing requires a supported paid or organizational plan. Follow your institution’s LMS embedding policy.</p>
             </div>
           </div>
         </div>
@@ -1415,9 +1418,9 @@
             <strong>Participant repository</strong>
             <img
               src="qr-code.png"
-              alt="QR code for the participant workshop repository at tiny.utk.edu/olc-github"
+              alt="QR code for the participant workshop repository at tiny.utk.edu/github-olc"
             >
-            <a class="launch-url" href="https://tiny.utk.edu/olc-github">tiny.utk.edu/olc-github</a>
+            <a class="launch-url" href="https://tiny.utk.edu/github-olc">tiny.utk.edu/github-olc</a>
             <span>Scan to open the participant repository.</span>
           </div>
           <p class="handoff-check reveal">Before we hand off: confirm that GitHub shows your profile image in the upper-right corner. If not, raise your hand and we will help.</p>
