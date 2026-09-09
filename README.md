@@ -36,7 +36,7 @@ Copy and paste the iframe code below into the HTML editor in your LMS. Insert th
 <iframe
   src="YOUR_GITHUB_PAGES_URL"
   title="Interactive course content"
-  style="width:100%; min-height:650px; border:0;"
+  style="width:100%; min-height:1600px; border:0;"
   loading="lazy">
 </iframe>
 ```
