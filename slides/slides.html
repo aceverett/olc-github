@@ -1203,9 +1203,18 @@
           transform: none;
         }
       }
-    </style>
+
+.workshop-nav { display:flex; flex-wrap:wrap; gap:8px; padding:12px max(18px,calc((100% - 944px)/2)); background:#faf9f5; border-bottom:1px solid #d1cfc5; font:600 0.9375rem/1.4 system-ui,sans-serif; }
+.workshop-nav a { display:flex; align-items:center; min-height:44px; padding:10px 16px; border:1px solid #315c7c; border-radius:3px; color:#315c7c; text-decoration:none; }
+.workshop-nav a[aria-current="page"] { background:#315c7c; color:#fff; }
+.workshop-nav a:hover { text-decoration:underline; text-underline-offset:4px; }
+.workshop-nav a:focus-visible { outline:3px solid #315c7c; outline-offset:3px; }
+
+@media print { .workshop-nav { display:none; } }
+</style>
   </head>
   <body>
+<nav class="workshop-nav" aria-label="Workshop materials"><a href="../index.html">ABC Pre-K Classroom</a><a href="slides.html" aria-current="page">Presentation slides</a></nav>
     <div class="progress" aria-hidden="true">
       <span id="progressFill"></span>
     </div>
@@ -1442,6 +1451,7 @@
         }
 
         document.addEventListener("keydown", (event) => {
+          if (event.target.closest("a, button, input, textarea, select, summary, [contenteditable]")) return;
           const nextKeys = ["ArrowRight", "ArrowDown", "PageDown", " "];
           const prevKeys = ["ArrowLeft", "ArrowUp", "PageUp"];
           if (nextKeys.includes(event.key)) {

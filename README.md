@@ -9,12 +9,12 @@ Welcome to the companion repository for our OLC Accelerate 2026 session. This re
 ## What is included
 
 - `index.html` — the interactive webpage you will fork, edit, and embed into your LMS
-- `slides/` — our conference presentation
+- `slides/slides.html` — our conference presentation
 
 ## Start here
 
 - [Open the example interactive webpage](https://aceverett.github.io/olc-github/)
-- [Open the presentation slides]
+- [Open the presentation slides](https://aceverett.github.io/olc-github/slides/slides.html)
 
 ## Workshop steps
 
