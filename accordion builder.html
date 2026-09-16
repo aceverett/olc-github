@@ -75,12 +75,50 @@
         outline: 3px solid var(--clay);
         outline-offset: 3px;
       }
+
+      .workshop-nav {
+        display:flex;
+        flex-wrap:wrap;
+        gap:8px;
+        padding:12px max(18px,calc((100% - 944px)/2));
+        background:#faf9f5;
+        border-bottom:1px solid #d1cfc5;
+        font:600 0.9375rem/1.4 system-ui,sans-serif;
+      }
+      .workshop-nav a {
+        display:flex;
+        align-items:center;
+        min-height:44px;
+        padding:10px 16px;
+        border:1px solid #315c7c;
+        border-radius:3px;
+        color:#315c7c;
+        text-decoration:none;
+      }
+      .workshop-nav a[aria-current="page"] {
+        background:#315c7c;
+        color:#fff;
+      }
+      .workshop-nav a:hover {
+        text-decoration:underline;
+        text-underline-offset:4px;
+      }
+      .workshop-nav a:focus-visible {
+        outline:3px solid #315c7c;
+        outline-offset:3px;
+      }
+
+      @media print { .workshop-nav { display:none; } }
     </style>
   </head>
   <body
-    class="min-h-screen py-12 px-4 md:px-8 lg:px-16 selection:bg-[#D97757]/20"
+    class="min-h-screen selection:bg-[#D97757]/20"
   >
-    <div class="max-w-6xl mx-auto">
+    <nav class="workshop-nav" aria-label="Workshop materials">
+      <a href="accordion%20builder.html" aria-current="page">LMS Accordion Builder</a>
+      <a href="slides/slides.html">Presentation Slides</a>
+    </nav>
+    <div class="max-w-6xl mx-auto px-4 md:px-8 lg:px-16 pt-12">
       <!-- Header -->
       <header
         class="mb-12 border-b border-[#141413]/10 pb-8 flex flex-col md:flex-row justify-between items-start md:items-end gap-6"
@@ -260,7 +298,7 @@
       >
         <span>OLC 2026 // COGNITIVE INTERACTIONS</span>
         <a
-          href="slides/"
+          href="slides/slides.html"
           class="hover:text-black transition-colors flex items-center gap-1"
         >
           <span>Back to Slides</span>
