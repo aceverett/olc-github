@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LMS Custom Accordion Builder — OLC Accelerate 2026 Sandbox</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    >
+
+    <style>
+      :root {
+        --ivory: #faf9f5;
+        --slate: #141413;
+        --clay: #d97757;
+        --clay-dark: #b85c3e;
+        --oat: #e3dacc;
+        --paper: #ffffff;
+        --muted: #87867f;
+        --olive: #788c5d;
+        --olive-light: #f0f4ec;
+
+        /* UTK Orange Theme overrides */
+        --utk-orange: #ff8200;
+        --utk-gray: #58595b;
+      }
+
+      body {
+        background-color: var(--ivory);
+        background-image:
+          radial-gradient(var(--slate) 0.5px, transparent 0.5px),
+          radial-gradient(var(--slate) 0.5px, var(--ivory) 0.5px);
+        background-size: 24px 24px;
+        background-position:
+          0 0,
+          12px 12px;
+        color: var(--slate);
+        font-family: "Inter", sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .serif {
+        font-family: "Playfair Display", serif;
+      }
+      .mono {
+        font-family: "JetBrains Mono", monospace;
+      }
+
+      /* Tactile Sheet Shadows */
+      .sheet-shadow {
+        box-shadow:
+          0 1px 3px rgba(20, 20, 19, 0.02),
+          0 4px 12px rgba(20, 20, 19, 0.03),
+          0 15px 30px rgba(20, 20, 19, 0.05);
+      }
+
+      /* Transition timings for collapsible areas */
+      .accordion-content {
+        transition:
+          max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+          opacity 0.2s ease-out;
+      }
+
+      .panel-editor + .panel-editor {
+        border-top: 1px solid #f1f1ef;
+        padding-top: 1.5rem;
+      }
+
+      .panel-remove:focus-visible,
+      #add-panel-btn:focus-visible {
+        outline: 3px solid var(--clay);
+        outline-offset: 3px;
+      }
+    </style>
+  </head>
+  <body
+    class="min-h-screen py-12 px-4 md:px-8 lg:px-16 selection:bg-[#D97757]/20"
+  >
+    <div class="max-w-6xl mx-auto">
+      <!-- Header -->
+      <header
+        class="mb-12 border-b border-[#141413]/10 pb-8 flex flex-col md:flex-row justify-between items-start md:items-end gap-6"
+      >
+        <div>
+          <div class="flex items-center gap-3 mb-3">
+            <span class="w-2.5 h-2.5 bg-[#D97757] rounded-full"></span>
+            <span
+              class="mono text-[10px] uppercase font-bold tracking-widest text-[#87867F]"
+              >OLC ACCELERATE 2026 // LIVE PLAYGROUND</span
+            >
+          </div>
+          <h1 class="serif text-4xl md:text-5xl font-bold tracking-tight">
+            LMS Accordion Builder
+          </h1>
+        </div>
+        <div class="max-w-md text-left md:text-right">
+          <p
+            class="text-xs text-[#87867F] font-mono leading-relaxed uppercase tracking-wider"
+          >
+            Topic: GitHub is for IDs, Too
+          </p>
+          <p class="text-sm text-gray-500 mt-2">
+            Design screen-reader compliant, gorgeous course elements live. Copy
+            raw code or responsive iframe wrappers for instant LMS deployment.
+          </p>
+        </div>
+      </header>
+
+      <!-- Main Builder Grid -->
+      <main class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <!-- LEFT COLUMN: Editor Form Controls -->
+        <section
+          class="lg:col-span-5 space-y-8"
+          aria-label="Editor Form Controls"
+        >
+          <div class="flex items-center gap-4">
+            <span
+              class="mono text-[10px] text-[#D97757] font-bold bg-[#D97757]/10 px-3 py-1 rounded-full border border-[#D97757]/20"
+              >01 // BUILD ENGINE</span
+            >
+            <hr class="flex-grow border-[#141413]/5">
+          </div>
+
+          <div class="space-y-6">
+            <!-- Metadata and Global Settings -->
+            <div
+              class="bg-white rounded-2xl p-6 border border-gray-200/80 sheet-shadow space-y-5"
+            >
+              <h3
+                class="mono text-[10px] font-bold uppercase tracking-wider text-gray-400 border-b border-gray-100 pb-2"
+              >
+                Global Settings
+              </h3>
+
+              <div>
+                <label
+                  for="editor-header"
+                  class="block text-[10px] font-bold uppercase tracking-widest text-[#87867F] mb-1.5"
+                  >Accordion Section Title</label
+                >
+                <input
+                  type="text"
+                  id="editor-header"
+                  value="Course Syllabus Highlights"
+                  class="w-full px-4 py-3 bg-[#FAF9F5]/50 border border-gray-200 rounded-xl text-sm font-medium focus:outline-none focus:border-[#D97757] focus:bg-white transition-all"
+                >
+              </div>
+
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label
+                    for="theme-select"
+                    class="block text-[10px] font-bold uppercase tracking-widest text-[#87867F] mb-1.5"
+                    >Design Theme</label
+                  >
+                  <select
+                    id="theme-select"
+                    class="w-full px-4 py-3 bg-[#FAF9F5]/50 border border-gray-200 rounded-xl text-xs font-medium focus:outline-none focus:border-[#D97757]"
+                  >
+                    <option value="ivory-clay">Ivory &amp; Clay (Default)</option>
+                    <option value="utk-beacon">Tennessee Orange</option>
+                    <option value="slate-classic">Slate Monochrome</option>
+                  </select>
+                </div>
+                <div>
+                  <label
+                    for="font-select"
+                    class="block text-[10px] font-bold uppercase tracking-widest text-[#87867F] mb-1.5"
+                    >Typography</label
+                  >
+                  <select
+                    id="font-select"
+                    class="w-full px-4 py-3 bg-[#FAF9F5]/50 border border-gray-200 rounded-xl text-xs font-medium focus:outline-none focus:border-[#D97757]"
+                  >
+                    <option value="serif">Playfair Serif</option>
+                    <option value="sans">Inter Modern Sans</option>
+                    <option value="mono">JetBrains Monospace</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Accordion Panel Contents -->
+            <div
+              class="bg-white rounded-2xl p-6 border border-gray-200/80 sheet-shadow space-y-6"
+            >
+              <h3
+                class="mono text-[10px] font-bold uppercase tracking-wider text-gray-400 border-b border-gray-100 pb-2"
+              >
+                Accordion Contents
+              </h3>
+
+              <div id="panel-editor" class="space-y-6" aria-live="polite"></div>
+              <button
+                type="button"
+                id="add-panel-btn"
+                class="w-full py-3 border border-dashed border-[#D97757]/60 text-[#B85C3E] hover:bg-[#D97757]/10 font-mono text-xs font-bold tracking-widest uppercase transition-colors"
+              >
+                + Add accordion item
+              </button>
+              <p class="text-xs leading-relaxed text-[#87867F]">
+                Add as many items as your course needs. The exported code uses native HTML disclosure controls, so it works without scripts or external files.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- RIGHT COLUMN: Live Rendering & Sandbox Outputs -->
+        <section
+          class="lg:col-span-7 space-y-8"
+          aria-label="Visual Feedback Card Preview"
+        >
+          <div class="flex items-center gap-4">
+            <span
+              class="mono text-[10px] text-[#788C5D] font-bold bg-[#788C5D]/10 px-3 py-1 rounded-full border border-[#788C5D]/20"
+              >02 // LIVE PREVIEW &amp; CODE GENERATION</span
+            >
+            <hr class="flex-grow border-[#141413]/5">
+          </div>
+
+          <!-- Live Preview Stage -->
+          <div
+            id="preview-stage"
+            class="bg-white rounded-3xl p-8 md:p-12 border border-[#141413]/10 sheet-shadow transition-all duration-300"
+          >
+            <h2
+              id="live-header"
+              class="serif text-3xl font-bold mb-6 border-b border-gray-100 pb-4"
+            >
+              Course Syllabus Highlights
+            </h2>
+
+            <div id="live-accordion" class="space-y-4" aria-live="polite"></div>
+          </div>
+
+          <!-- Export Actions Grid -->
+          <div class="grid grid-cols-1 gap-4">
+            <button
+              type="button"
+              id="html-copy-btn"
+              onclick="copyRawHTML()"
+              class="py-4 bg-[#141413] hover:bg-gray-800 text-[#FAF9F5] rounded-xl font-mono text-xs tracking-widest uppercase font-bold transition-all shadow-lg active:scale-95"
+            >
+              Copy Canvas-ready HTML
+            </button>
+          </div>
+          <p id="export-note" class="text-xs leading-relaxed text-[#87867F]">
+            Paste the copied markup into Canvas's HTML editor. It uses no scripts, iframes, external fonts, or framework classes.
+          </p>
+        </section>
+      </main>
+
+      <!-- Footer -->
+      <footer
+        class="mt-24 border-t border-gray-200 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-[#87867F] mono uppercase tracking-widest"
+      >
+        <span>OLC 2026 // COGNITIVE INTERACTIONS</span>
+        <a
+          href="slides/"
+          class="hover:text-black transition-colors flex items-center gap-1"
+        >
+          <span>Back to Slides</span>
+          <span>→</span>
+        </a>
+      </footer>
+    </div>
+
+    <script>
+      // Theme Token Map
+      const themes = {
+        "ivory-clay": {
+          accent: "#D97757",
+          bg: "#FAF9F5",
+          tabColor: "#141413",
+          cardBg: "#FFFFFF",
+        },
+        "utk-beacon": {
+          accent: "#FF8200",
+          bg: "#FFF3E0",
+          tabColor: "#4B4B4B",
+          cardBg: "#FFFFFF",
+        },
+        "slate-classic": {
+          accent: "#58595B",
+          bg: "#E8E8E8",
+          tabColor: "#141413",
+          cardBg: "#FFFFFF",
+        },
+      };
+
+      const fontStyles = {
+        serif: "Playfair Display, serif",
+        sans: "Inter, sans-serif",
+        mono: "JetBrains Mono, monospace",
+      };
+
+      const canvasFontStacks = {
+        serif: "Georgia, 'Times New Roman', serif",
+        sans: "Arial, Helvetica, sans-serif",
+        mono: "'Courier New', monospace",
+      };
+
+      const panelItems = [
+        {
+          heading: "Pillar 1: Grading Scale",
+          body: "Assignments are heavily weighted towards portfolio execution. There are absolutely no traditional exams in this curriculum.",
+        },
+        {
+          heading: "Pillar 2: Submission Policy",
+          body: "All assignments must be committed, built, and verified live on your personal GitHub Pages URL. Late sync schedules are subject to local rate limits.",
+        },
+      ];
+
+      function updateLivePreview() {
+        const headerText = document.getElementById("editor-header").value;
+        const selectedTheme = document.getElementById("theme-select").value;
+        const selectedFont = document.getElementById("font-select").value;
+        document.getElementById("live-header").textContent = headerText;
+        const token = themes[selectedTheme];
+        const stage = document.getElementById("preview-stage");
+        stage.style.fontFamily = fontStyles[selectedFont];
+        document.getElementById("live-header").style.color = token.tabColor;
+        renderPreview(token);
+      }
+
+      // Toggle logic for Accordion expansion with clean metrics
+      function togglePanel(index) {
+        const button = document.getElementById(`accordion-tab-${index}`);
+        const panel = document.getElementById(`accordion-panel-${index}`);
+        const icon = document.getElementById(`icon-${index}`);
+        const isExpanded = button.getAttribute("aria-expanded") === "true";
+
+        // Close all other panels first to retain standard Accordion posture
+        for (let i = 1; i <= 2; i++) {
+          if (i !== index) {
+            document
+              .getElementById(`accordion-tab-${i}`)
+              .setAttribute("aria-expanded", "false");
+            const otherPanel = document.getElementById(`accordion-panel-${i}`);
+            otherPanel.style.maxHeight = "0px";
+            otherPanel.style.opacity = "0";
+            document.getElementById(`icon-${i}`).textContent = "+";
+            document.getElementById(`icon-${i}`).style.transform =
+              "rotate(0deg)";
+          }
+        }
+
+        if (isExpanded) {
+          button.setAttribute("aria-expanded", "false");
+          panel.style.maxHeight = "0px";
+          panel.style.opacity = "0";
+          icon.textContent = "+";
+          icon.style.transform = "rotate(0deg)";
+        } else {
+          button.setAttribute("aria-expanded", "true");
+          panel.style.maxHeight = panel.scrollHeight + "px";
+          panel.style.opacity = "1";
+          icon.textContent = "−";
+          icon.style.transform = "rotate(180deg)";
+        }
+      }
+
+      function escapeHTML(value) {
+        return String(value)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#39;");
+      }
+
+      function formatBodyText(value) {
+        return escapeHTML(value)
+          .split(/\n{2,}/)
+          .map((part) => part.trim())
+          .filter(Boolean)
+          .map(
+            (part) =>
+              `<p style="margin: 0 0 12px 0;">${part.replace(/\n/g, "<br>")}</p>`,
+          )
+          .join("\n      ");
+      }
+
+      // Generation of standard self-contained styling and native disclosure components.
+      function buildExportHTML() {
+        const headerText = escapeHTML(
+          document.getElementById("editor-header").value,
+        );
+        const theme = document.getElementById("theme-select").value;
+        const fontVal =
+          canvasFontStacks[document.getElementById("font-select").value];
+        const token = themes[theme];
+        const details = panelItems
+          .map(
+            (panel) => `  <details style="margin-bottom: 12px; border: 1px solid #d8d5ca; border-radius: 8px; overflow: hidden; background: #ffffff;">
+    <summary style="padding: 16px; font-weight: 700; cursor: pointer; background: ${token.bg}; color: ${token.tabColor};">${escapeHTML(panel.heading)}</summary>
+    <div style="padding: 16px; border-top: 1px solid #d8d5ca; font-size: 15px; line-height: 1.6; color: ${token.tabColor};">
+      ${formatBodyText(panel.body)}
+    </div>
+  </details>`,
+          )
+          .join("\n\n");
+
+        return `<!-- Canvas-ready accessible accordion: native HTML, inline styles, and no JavaScript. -->
+<section aria-labelledby="custom-accordion-title" style="font-family: ${fontVal}; max-width: 760px; margin: 20px auto; color: ${token.tabColor};">
+  <h2 id="custom-accordion-title" style="font-size: 24px; line-height: 1.2; border-bottom: 2px solid ${token.accent}; padding-bottom: 10px; margin: 0 0 18px 0;">${headerText}</h2>
+${details}
+</section>`;
+      }
+
+      function renderEditor() {
+        const editor = document.getElementById("panel-editor");
+        editor.replaceChildren();
+
+        panelItems.forEach((panel, index) => {
+          const wrapper = document.createElement("div");
+          wrapper.className = "panel-editor space-y-3";
+
+          const toolbar = document.createElement("div");
+          toolbar.className = "flex items-center justify-between gap-4";
+          const label = document.createElement("span");
+          label.className = "mono text-[9px] text-[#D97757] font-bold tracking-widest";
+          label.textContent = `PANEL ${String(index + 1).padStart(2, "0")}`;
+          toolbar.appendChild(label);
+
+          if (panelItems.length > 1) {
+            const remove = document.createElement("button");
+            remove.type = "button";
+            remove.className = "panel-remove text-xs text-[#87867F] hover:text-[#B85C3E] underline underline-offset-4";
+            remove.textContent = "Remove";
+            remove.setAttribute("aria-label", `Remove panel ${index + 1}`);
+            remove.addEventListener("click", () => {
+              panelItems.splice(index, 1);
+              renderEditor();
+              updateLivePreview();
+            });
+            toolbar.appendChild(remove);
+          }
+
+          const heading = document.createElement("input");
+          heading.type = "text";
+          heading.value = panel.heading;
+          heading.setAttribute("aria-label", `Panel ${index + 1} heading`);
+          heading.className = "w-full px-4 py-2.5 bg-[#FAF9F5]/50 border border-gray-200 rounded-lg text-xs font-semibold focus:outline-none focus:border-[#D97757] focus:bg-white transition-all";
+          heading.addEventListener("input", () => {
+            panel.heading = heading.value;
+            updateLivePreview();
+          });
+
+          const body = document.createElement("textarea");
+          body.rows = 3;
+          body.value = panel.body;
+          body.setAttribute("aria-label", `Panel ${index + 1} content`);
+          body.className = "w-full px-4 py-2.5 bg-[#FAF9F5]/50 border border-gray-200 rounded-lg text-xs font-light focus:outline-none focus:border-[#D97757] focus:bg-white transition-all";
+          body.addEventListener("input", () => {
+            panel.body = body.value;
+            updateLivePreview();
+          });
+
+          wrapper.append(toolbar, heading, body);
+          editor.appendChild(wrapper);
+        });
+      }
+
+      function renderPreview(token) {
+        const preview = document.getElementById("live-accordion");
+        preview.replaceChildren();
+
+        panelItems.forEach((panel) => {
+          const details = document.createElement("details");
+          details.className = "border border-gray-200 rounded-xl overflow-hidden bg-white";
+          const summary = document.createElement("summary");
+          summary.className = "cursor-pointer py-4 px-6 text-left font-semibold text-sm";
+          summary.style.backgroundColor = token.bg;
+          summary.style.color = token.tabColor;
+          summary.textContent = panel.heading || "Untitled accordion item";
+
+          const content = document.createElement("div");
+          content.className = "p-6 text-sm text-gray-600 border-t border-gray-100 leading-relaxed";
+          const paragraphs = panel.body.split(/\n{2,}/).map((part) => part.trim()).filter(Boolean);
+          paragraphs.forEach((paragraph) => {
+            const item = document.createElement("p");
+            item.className = "mb-3 last:mb-0";
+            item.textContent = paragraph;
+            content.appendChild(item);
+          });
+          details.append(summary, content);
+          preview.appendChild(details);
+        });
+      }
+
+      function initializeBuilder() {
+        renderEditor();
+        document.getElementById("add-panel-btn").addEventListener("click", () => {
+          panelItems.push({ heading: "New accordion item", body: "Add supporting details here." });
+          renderEditor();
+          updateLivePreview();
+          const inputs = document.querySelectorAll("#panel-editor input");
+          inputs[inputs.length - 1].focus();
+        });
+        ["editor-header", "theme-select", "font-select"].forEach((id) => {
+          document.getElementById(id).addEventListener("input", updateLivePreview);
+          document.getElementById(id).addEventListener("change", updateLivePreview);
+        });
+        updateLivePreview();
+      }
+
+      function copyRawHTML() {
+        const htmlCode = buildExportHTML();
+        copyToClipboard(htmlCode, "html-copy-btn", "Copy Canvas-ready HTML");
+      }
+
+      function copyToClipboard(text, elementId, originalText) {
+        const btn = document.getElementById(elementId);
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(
+            () => flashBtn(btn, originalText),
+            () => fallbackCopy(text, btn, originalText),
+          );
+        } else {
+          fallbackCopy(text, btn, originalText);
+        }
+      }
+
+      function fallbackCopy(text, btn, originalText) {
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        try {
+          document.execCommand("copy");
+        } catch (e) {}
+        document.body.removeChild(ta);
+        flashBtn(btn, originalText);
+      }
+
+      function flashBtn(btn, originalText) {
+        btn.textContent = "COPIED TO CLIPBOARD ✓";
+        btn.style.backgroundColor = "var(--olive)";
+        btn.style.color = "#FFFFFF";
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.style.backgroundColor = "";
+          btn.style.color = "";
+        }, 1500);
+      }
+
+      initializeBuilder();
+    </script>
+  </body>
+</html>
