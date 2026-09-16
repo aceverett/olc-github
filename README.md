@@ -8,12 +8,13 @@ Welcome to the companion repository for our OLC Accelerate 2026 session. This re
 
 ## What is included
 
-- `index.html` — the interactive webpage you will fork, edit, and embed into your LMS
+- `accordion builder.html` — the interactive webpage you will fork, edit, and embed into your LMS
+- `index.html` — the workshop landing page
 - `slides/slides.html` — our conference presentation
 
 ## Start here
 
-- [Open the example interactive webpage](https://aceverett.github.io/olc-github/)
+- [Open the Accordion Builder](https://aceverett.github.io/olc-github/accordion%20builder.html)
 - [Open the presentation slides](https://aceverett.github.io/olc-github/slides/slides.html)
 
 ## Workshop steps
@@ -21,7 +22,7 @@ Welcome to the companion repository for our OLC Accelerate 2026 session. This re
 1. Select **Fork** near the upper-right corner of this repository.
 2. Create the fork in your GitHub account. This gives you a safe personal copy.
 3. From your fork's main repository page, press the period key (`.`) to open the browser editor.
-4. Open `index.html` and make the workshop change.
+4. Open `accordion builder.html` and make the workshop change.
 5. Open **Source Control**, write a short description, and select **Commit & Push**.
 6. Return to GitHub and open **Settings → Pages**.
 7. Publish from the `main` branch and the `/ (root)` folder.
@@ -44,5 +45,4 @@ This will allow your Github Page to load as an embedded webpage inside your LMS.
 
 ## Questions?
 Email Anna Everett (everetta@utk.edu) or Jian Su (jsu1@utk.edu). 
-
 
