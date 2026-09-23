@@ -43,6 +43,17 @@ Copy and paste the iframe code below into the HTML editor in your LMS. Insert th
 ```
 This will allow your Github Page to load as an embedded webpage inside your LMS.
 
+## Sign Up for Github Education
+GitHub's current process is fairly short:
+- Create or sign into your personal GitHub account.
+- Add and verify your university-issued email address on that account.
+- Go to Settings → Education benefits.
+- Under GitHub Education, select Start an application.
+- Choose the educator/faculty option and complete the application.
+- Provide proof of current university affiliation if requested — GitHub may ask for something such as a faculty/staff ID or employment verification showing a current date.
+- Submit the application.
+- Once approved, access your benefits through the GitHub Education portal and activate benefits such as Copilot Pro and GitHub Team.
+
 ## Questions?
 Email Anna Everett (everetta@utk.edu) or Jian Su (jsu1@utk.edu). 
 
