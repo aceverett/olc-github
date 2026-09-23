@@ -15,7 +15,7 @@ Welcome to the companion repository for our OLC Accelerate 2026 session. This re
 ## Start here
 
 - [Open the Accordion Builder](https://aceverett.github.io/olc-github/accordion%20builder.html)
-- [Open the presentation slides](https://aceverett.github.io/olc-github/slides/slides.html)
+- [Open the presentation slides](https://aceverett.github.io/olc-github/index.html)
 
 ## Workshop steps
 
