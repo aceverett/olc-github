@@ -10,7 +10,6 @@ Welcome to the companion repository for our OLC Accelerate 2026 session. This re
 
 - `accordion builder.html` — the interactive webpage you will fork, edit, and embed into your LMS
 - `index.html` — the workshop landing page
-- `slides/slides.html` — our conference presentation
 
 ## Start here
 
