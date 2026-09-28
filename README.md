@@ -21,8 +21,8 @@ Welcome to the companion repository for our OLC Accelerate 2026 session. This re
 1. Select **Fork** near the upper-right corner of this repository.
 2. Create the fork in your GitHub account. This gives you a safe personal copy.
 3. From your fork's main repository page, press the period key (`.`) to open the browser editor.
-4. Open `accordion builder.html` and make the workshop change.
-5. Open **Source Control**, write a short description, and select **Commit & Push**.
+4. Open `README.md` and practice making an edit.
+5. Select **Commit & Push** and write a short description of the change you made.
 6. Return to GitHub and open **Settings → Pages**.
 7. Publish from the `main` branch and the `/ (root)` folder.
 8. Copy your GitHub Pages URL and link to it or embed it in your LMS (see below).
