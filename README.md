@@ -44,7 +44,7 @@ Copy and paste the iframe code below into the HTML editor in your LMS. Insert th
 This will allow your Github Page to load as an embedded webpage inside your LMS.
 
 ## Sign Up for Github Education
-GitHub's current process is fairly short:
+When you have more time, make sure to sign up for Github Education to get special Pro features, including access to in-browser AI editing tools like Codespaces. To sign up follow these steps:
 - Create or sign into your personal GitHub account.
 - Add and verify your university-issued email address on that account.
 - Go to Settings → Education benefits.
