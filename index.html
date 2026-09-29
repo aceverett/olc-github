@@ -1219,7 +1219,33 @@
       #slide-1 .presenter-credit p { font-size:20px; color:var(--gray-700); }
       #slide-1 .login-prompt { max-width:960px; }
       #slide-1 .login-prompt p { font-size:18px; line-height:1.5; margin-top:8px; }
-      #activity-intro h2 { overflow-wrap:anywhere; max-width:1120px; font-size:clamp(34px,4.3vw,60px); line-height:1.2; margin:0; }
+      #activity-intro .activity-intro-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        align-items: center;
+        gap: clamp(28px, 4vw, 56px);
+      }
+
+      #activity-intro .activity-example {
+        display: block;
+        width: 100%;
+        height: auto;
+        border: 1px solid var(--gray-300);
+        border-radius: 6px;
+      }
+
+      #activity-intro h2 {
+        overflow-wrap: anywhere;
+        font-size: clamp(30px, 3vw, 42px);
+        line-height: 1.2;
+        margin: 0;
+      }
+
+      @media (max-width: 860px) {
+        #activity-intro .activity-intro-layout {
+          grid-template-columns: 1fr;
+        }
+      }
 </style>
   </head>
   <body>
@@ -1253,7 +1279,8 @@
       </section>
 
       <section class="slide" id="activity-intro" aria-label="Introduction to the instructional activity">
-        <div class="slide-inner wide">
+        <div class="slide-inner wide activity-intro-layout">
+          <img class="activity-example reveal" src="example_accordions.png" width="720" height="443" alt="Course Syllabus Highlights accordion example with collapsible sections for Course Overview, Syllabus Highlights, Weekly Expectations, Assignments, Course Resources, and Getting Help.">
           <h2 class="reveal">Today, we will show you how to use GitHub to modify, host, and reuse a vibe-coded instructional activity that you can embed in your own LMS.</h2>
         </div>
       </section>
