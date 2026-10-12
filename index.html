@@ -1246,6 +1246,247 @@
           grid-template-columns: 1fr;
         }
       }
+
+      .problem-questions {
+        display: grid;
+        gap: 10px 28px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin-top: 30px;
+        max-width: 850px;
+      }
+
+      .problem-questions span {
+        border-top: 1px solid var(--gray-300);
+        color: var(--gray-700);
+        font-family: var(--serif);
+        font-size: clamp(19px, 2vw, 26px);
+        padding-top: 12px;
+      }
+
+      .presentation-overview {
+        display: grid;
+        gap: clamp(28px, 5vw, 64px);
+        grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+      }
+
+      .overview-part {
+        border-top: 3px solid var(--clay);
+        padding-top: 18px;
+      }
+
+      .overview-part h3 {
+        font-size: clamp(22px, 2.4vw, 30px);
+        margin-bottom: 14px;
+      }
+
+      .overview-part p {
+        color: var(--gray-700);
+        font-size: clamp(17px, 1.45vw, 21px);
+        line-height: 1.5;
+      }
+
+      .overview-part ul {
+        color: var(--gray-700);
+        display: grid;
+        font-size: clamp(16px, 1.35vw, 19px);
+        gap: 10px;
+        line-height: 1.4;
+        margin: 0;
+        padding-left: 22px;
+      }
+
+      .positioning {
+        border-left: 5px solid var(--clay);
+        font-family: var(--serif);
+        font-size: clamp(34px, 5vw, 64px);
+        line-height: 1.16;
+        margin: 0 0 28px;
+        max-width: 1100px;
+        padding-left: clamp(20px, 4vw, 52px);
+      }
+
+      .positioning span {
+        color: var(--blue);
+      }
+
+      .positioning-note {
+        color: var(--gray-700);
+        font-size: clamp(18px, 1.6vw, 22px);
+        max-width: 760px;
+      }
+
+      .lifecycle {
+        display: grid;
+        gap: 0;
+        grid-template-columns: 1fr;
+        margin-top: 32px;
+      }
+
+      .lifecycle-step {
+        border-top: 1px solid var(--gray-300);
+        display: grid;
+        grid-template-columns: minmax(110px, 0.4fr) 1fr;
+        min-width: 0;
+        padding: 12px 0;
+      }
+
+      .lifecycle-step:not(:last-child)::after {
+        color: var(--clay);
+        content: "↓";
+        display: block;
+        font-size: 18px;
+        grid-column: 1 / -1;
+        line-height: 1.3;
+        padding-left: 2px;
+      }
+
+      .lifecycle-step strong {
+        display: block;
+        font-family: var(--mono);
+        font-size: clamp(13px, 1.15vw, 16px);
+        letter-spacing: 0.03em;
+      }
+
+      .lifecycle-step span {
+        color: var(--gray-700);
+        display: block;
+        font-size: clamp(14px, 1.1vw, 16px);
+        line-height: 1.45;
+      }
+
+      .rollover-compare {
+        display: grid;
+        gap: clamp(24px, 4vw, 54px);
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .rollover-option {
+        border-top: 3px solid var(--clay);
+        padding-top: 18px;
+      }
+
+      .rollover-option h3 {
+        font-size: clamp(22px, 2.4vw, 30px);
+        margin-bottom: 20px;
+      }
+
+      .course-copy-flow {
+        color: var(--gray-700);
+        display: grid;
+        font-family: var(--mono);
+        font-size: clamp(13px, 1.35vw, 17px);
+        gap: 4px;
+        line-height: 1.35;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .course-copy-flow li:not(:last-child)::after {
+        color: var(--clay);
+        content: "↓";
+        display: block;
+        font-size: 18px;
+        line-height: 1.3;
+      }
+
+      .central-source {
+        background: var(--gray-150);
+        border-radius: 6px;
+        padding: clamp(18px, 2.5vw, 28px);
+      }
+
+      .central-source > strong {
+        display: block;
+        font-family: var(--serif);
+        font-size: 24px;
+        margin-bottom: 18px;
+      }
+
+      .consumer-list {
+        border-left: 2px solid var(--blue);
+        display: grid;
+        gap: 10px;
+        list-style: none;
+        margin: 0;
+        padding: 0 0 0 20px;
+      }
+
+      .consumer-list li {
+        background: var(--paper);
+        border-radius: 3px;
+        color: var(--gray-700);
+        font-size: 16px;
+        padding: 10px 14px;
+      }
+
+      .source-takeaway {
+        font-family: var(--serif);
+        font-size: clamp(22px, 2.4vw, 30px);
+        margin-top: 24px;
+      }
+
+      .inheritance-scenario {
+        color: var(--gray-700);
+        font-size: clamp(18px, 1.7vw, 23px);
+        line-height: 1.5;
+        margin: -12px 0 30px;
+        max-width: 880px;
+      }
+
+      .inheritance-kit {
+        display: grid;
+        gap: 14px;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .inheritance-kit article {
+        border-top: 3px solid var(--clay);
+        padding-top: 14px;
+      }
+
+      .inheritance-kit strong {
+        display: block;
+        font-family: var(--serif);
+        font-size: clamp(19px, 1.8vw, 24px);
+        font-weight: 500;
+        margin-bottom: 8px;
+      }
+
+      .inheritance-kit span {
+        color: var(--gray-700);
+        font-size: 15px;
+        line-height: 1.45;
+      }
+
+      .builder-caption {
+        border-top: 1px solid #8c7f6d;
+        color: var(--gray-300);
+        font-size: 16px;
+        margin-top: 20px;
+        max-width: 700px;
+        padding-top: 14px;
+      }
+
+      @media (max-width: 860px) {
+        .presentation-overview {
+          grid-template-columns: 1fr;
+        }
+
+        .inheritance-kit {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .rollover-compare {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 520px) {
+        .problem-questions {
+          grid-template-columns: 1fr;
+        }
+      }
 </style>
   </head>
   <body>
@@ -1278,139 +1519,117 @@
         </div>
       </section>
 
-      <section class="slide" id="activity-intro" aria-label="Introduction to the instructional activity">
-        <div class="slide-inner wide activity-intro-layout">
-          <img class="activity-example reveal" src="example_accordions.png" width="720" height="443" alt="Course Syllabus Highlights accordion example with collapsible sections for Course Overview, Syllabus Highlights, Weekly Expectations, Assignments, Course Resources, and Getting Help.">
-          <h2 class="reveal">Today, we will show you how to use GitHub to modify, host, and reuse a vibe-coded instructional activity that you can embed in your own LMS.</h2>
-        </div>
-      </section>
-
-      <section class="slide" id="slide-2" aria-label="Session plan and outcome">
+      <section class="slide" id="slide-2" aria-label="Presentation overview">
         <div class="slide-inner wide">
-          <p class="eyebrow reveal">What we will do today</p>
-          <h2 class="reveal">A short orientation. A live build. A reusable workflow.</h2>
-          <div class="session-plan reveal">
-            <div class="session-phase">
-              <span>01 / orient</span>
-              <h3>See the possibility</h3>
-              <p>See where GitHub fits in an instructional design workflow.</p>
-            </div>
-            <div class="session-phase">
-              <span>02 / watch</span>
-              <h3>Follow the workflow</h3>
-              <p>Watch a fork become an edited, published webpage.</p>
-            </div>
-            <div class="session-phase">
-              <span>03 / apply</span>
-              <h3>Deliver to your LMS</h3>
-              <p>Embed as a hosted iframe.</p>
-            </div>
-          </div>
-          <div class="outcomes reveal">
-            <strong>By the end, you can follow and repeat the five-step workflow.</strong>
-            <p>Fork → edit → commit → publish → deliver to your LMS.</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="slide" id="slide-3" aria-label="Essential GitHub vocabulary">
-        <div class="slide-inner wide">
-          <p class="eyebrow reveal">Five words are enough to begin</p>
-          <h2 class="reveal">GitHub is an online project folder with a memory.</h2>
-          <dl class="term-list reveal">
-            <div class="term">
-              <dt>Repository</dt>
-              <dd>The project folder stored online.</dd>
-            </div>
-            <div class="term">
-              <dt>Fork</dt>
-              <dd>Your own safe copy of that folder.</dd>
-            </div>
-            <div class="term">
-              <dt>Editor</dt>
-              <dd>The browser workspace where you make changes.</dd>
-            </div>
-            <div class="term">
-              <dt>Commit</dt>
-              <dd>A named save point you can return to.</dd>
-            </div>
-            <div class="term">
-              <dt>Pages</dt>
-              <dd>The feature that turns your vibe-coded project into a webpage.</dd>
-            </div>
-          </dl>
-        </div>
-      </section>
-
-      <section class="slide" id="slide-4" aria-label="Why GitHub is useful for instructional designers">
-        <div class="slide-inner wide">
-          <p class="eyebrow reveal">Why this workflow matters</p>
-          <h2 class="reveal">Your design idea should not stop at the edge of the LMS editor.</h2>
-          <div class="grid-3">
-            <article class="panel reveal">
-              <div class="panel-label">LMS editor</div>
-              <h3>Reliable, but limited</h3>
-              <p>Useful interaction ideas can collapse into static text and long pages.</p>
+          <p class="eyebrow reveal">Today’s route</p>
+          <h2 class="reveal">First, why GitHub? Then, how to use it.</h2>
+          <div class="presentation-overview reveal">
+            <article class="overview-part">
+              <h3>Why it helps</h3>
+              <p>A shared home for course projects—so custom interactives can be documented, updated, and reused.</p>
             </article>
-            <article class="panel reveal">
-              <div class="panel-label">Authoring suite</div>
-              <h3>Capable, but heavy</h3>
-              <p>Licenses are costly and can make small changes difficult.</p>
-            </article>
-            <article class="panel reveal">
-              <div class="panel-label">GitHub + AI</div>
-              <h3>Flexible and reachable</h3>
-              <p>A browser-based workspace makes custom webpages easier to build and revise.</p>
+            <article class="overview-part">
+              <h3>Su’s getting-started tutorial</h3>
+              <ul>
+                <li>Adapt an existing project for a course-design need</li>
+                <li>Document and track changes with commits and project history</li>
+                <li>Publish or reuse a web-based course component in Canvas</li>
+              </ul>
             </article>
           </div>
-          <p class="reframe-line reveal">You're probably already vibe-coding web interactives for your courses. GitHub gives your code a safe place to live.</p>
         </div>
       </section>
 
-      <section class="slide" id="slide-5" aria-label="Five-step GitHub workflow">
+      <section class="slide" id="slide-3" aria-label="The custom interactive maintenance problem">
         <div class="slide-inner wide">
-          <p class="eyebrow reveal">The live demonstration map</p>
-          <h2 class="reveal">Five actions turn the starter into your own live webpage.</h2>
-          <div class="solution-flow reveal">
-            <div class="solution-step">
-              <span>01 / copy</span>
-              <strong>Fork</strong>
-              <p>Make a safe copy in your account.</p>
-            </div>
-            <div class="solution-step">
-              <span>02 / change</span>
-              <strong>Edit</strong>
-              <p>Press <kbd>.</kbd> and update <code>index.html</code>.</p>
-            </div>
-            <div class="solution-step">
-              <span>03 / save</span>
-              <strong>Commit</strong>
-              <p>Name and save the new version.</p>
-            </div>
-            <div class="solution-step">
-              <span>04 / publish</span>
-              <strong>Pages</strong>
-              <p>Publish from <code>main</code> and <code>/(root)</code>.</p>
-            </div>
-            <div class="solution-step">
-              <span>05 / deliver</span>
-              <strong>Your LMS</strong>
-              <p>Embed the webpage as an iframe.</p>
-            </div>
-          </div>
-          <div class="resource-strip reveal">
-            <span>Su demonstrates the workflow live.</span>
-            <span>Anna circulates if you get stuck.</span>
-            <span>Questions are welcome after the full sequence.</span>
+          <p class="eyebrow reveal">The course-development challenge</p>
+          <h1 class="reveal">AI makes custom course interactives easier. What happens next?</h1>
+          <div class="problem-questions reveal" aria-label="Questions about maintaining course interactives">
+            <span>Where does it live?</span>
+            <span>Who updates it next semester?</span>
+            <span>What happens when the course is copied?</span>
+            <span>What changed six months ago?</span>
+            <span>Who inherits it?</span>
           </div>
         </div>
       </section>
 
-      <section class="slide invert" id="slide-6" aria-label="Live demonstration handoff and participant repository">
+      <section class="slide" id="slide-4" aria-label="Why GitHub belongs in an instructional design workflow">
+        <div class="slide-inner wide">
+          <p class="eyebrow reveal">A useful division of responsibility</p>
+          <h2 class="positioning reveal">Canvas is where students experience it.<br><span>GitHub is where the project lives.</span></h2>
+          <p class="positioning-note reveal">That is the problem we are going to use GitHub to help solve today.</p>
+        </div>
+      </section>
+
+      <section class="slide" id="slide-5" aria-label="Instructional design lifecycle with GitHub">
+        <div class="slide-inner wide">
+          <p class="eyebrow reveal">A familiar instructional design lifecycle</p>
+          <h2 class="reveal">GitHub supports the project across its life.</h2>
+          <div class="lifecycle reveal">
+            <div class="lifecycle-step"><strong>CREATE</strong><span>AI-assisted interactive</span></div>
+            <div class="lifecycle-step"><strong>DOCUMENT</strong><span>README for the next person</span></div>
+            <div class="lifecycle-step"><strong>VERSION</strong><span>Commits: what, when, why</span></div>
+            <div class="lifecycle-step"><strong>PUBLISH</strong><span>Pages gives it a web location</span></div>
+            <div class="lifecycle-step"><strong>DELIVER</strong><span>Canvas displays it to students</span></div>
+            <div class="lifecycle-step"><strong>MAINTAIN</strong><span>Update one shared source</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" id="slide-6" aria-label="Course rollover comparison">
+        <div class="slide-inner wide">
+          <p class="eyebrow reveal">One practical maintenance question</p>
+          <h2 class="reveal">What happens next semester?</h2>
+          <div class="rollover-compare reveal">
+            <article class="rollover-option">
+              <h3>Course-owned artifact</h3>
+              <ol class="course-copy-flow">
+                <li>Fall course</li>
+                <li>HTML file</li>
+                <li>Course copy</li>
+                <li>Spring course</li>
+                <li>Find file</li>
+                <li>Replace / update</li>
+                <li>Check embed</li>
+              </ol>
+            </article>
+            <article class="rollover-option">
+              <h3>Centrally maintained artifact</h3>
+              <div class="central-source">
+                <strong>One GitHub project</strong>
+                <ul class="consumer-list">
+                  <li>Fall Canvas course</li>
+                  <li>Spring Canvas course</li>
+                  <li>Summer Canvas course</li>
+                  <li>Other program site</li>
+                </ul>
+              </div>
+              <p class="source-takeaway">One maintained source. Multiple consumers.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" id="slide-7" aria-label="What a future instructional designer needs to inherit a project">
+        <div class="slide-inner wide">
+          <p class="eyebrow reveal">Design for the next owner, too</p>
+          <h2 class="reveal">What happens when someone else inherits the course?</h2>
+          <p class="inheritance-scenario reveal">One ID builds an interactive. Two years later, another ID inherits the course. Where is the source? What changed? How was it published? Who owns it?</p>
+          <div class="inheritance-kit reveal">
+            <article><strong>README</strong><span>Purpose, use, owner, update steps</span></article>
+            <article><strong>Repository</strong><span>The project files in one place</span></article>
+            <article><strong>Commit history</strong><span>A trail of changes and reasons</span></article>
+            <article><strong>Shared ownership</strong><span>A project the team can maintain</span></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide invert" id="slide-8" aria-label="Accordion Builder demonstration and participant repository">
         <div class="slide-inner workshop-launch-centered">
-          <p class="eyebrow reveal">Ready for the live demonstration?</p>
-          <h2 class="reveal">Signed in? Open the starter repository.</h2>
-          <p class="subtitle reveal">On a laptop, enter the web address. On a phone, scan the code to follow along or save the repository for later.</p>
+          <p class="eyebrow reveal">From project home to student experience</p>
+          <h2 class="reveal">Let’s explore the Accordion Builder.</h2>
+          <p class="subtitle reveal">A small custom interactive—and a project someone else can reuse.</p>
           <div class="launch-code reveal">
             <strong>Participant repository</strong>
             <img
@@ -1418,9 +1637,9 @@
               alt="QR code for the participant workshop repository at tiny.utk.edu/github-olc"
             >
             <a class="launch-url" href="https://tiny.utk.edu/github-olc">tiny.utk.edu/github-olc</a>
-            <span>Scan to open the participant repository.</span>
+            <span>Open the starter repository or save it for later.</span>
           </div>
-          <p class="handoff-check reveal">Before we hand off: confirm that you are logged in to Github. If you need help, raise your hand for assistance.</p>
+          <p class="builder-caption reveal">Sign in to GitHub before following along. We’ll fork, edit, commit, publish, and deliver the builder.</p>
         </div>
       </section>
     </main>
