@@ -50,7 +50,7 @@
 
       .progress span {
         display: block;
-        width: 12.5%;
+        width: 11.1111%;
         height: 100%;
         background: var(--clay);
         transition: width 240ms ease;
@@ -1288,7 +1288,7 @@
       .overview-part ul {
         color: var(--gray-700);
         display: grid;
-        font-size: clamp(16px, 1.35vw, 19px);
+        font-size: clamp(17px, 1.45vw, 21px);
         gap: 10px;
         line-height: 1.4;
         margin: 0;
@@ -1306,13 +1306,17 @@
       }
 
       .positioning span {
-        color: var(--blue);
+        color: var(--gray-700);
       }
 
       .positioning-note {
         color: var(--gray-700);
         font-size: clamp(18px, 1.6vw, 22px);
         max-width: 760px;
+      }
+
+      .github-bridge {
+        margin-top: 30px;
       }
 
       .lifecycle {
@@ -1494,7 +1498,7 @@
     <div class="progress" aria-hidden="true">
       <span id="progressFill"></span>
     </div>
-    <div id="counter" aria-hidden="true">1 / 8</div>
+    <div id="counter" aria-hidden="true">1 / 9</div>
     <div
       class="sr-only"
       aria-live="polite"
@@ -1533,14 +1537,32 @@
               <ul>
                 <li>Adapt an existing project for a course-design need</li>
                 <li>Document and track changes with commits and project history</li>
-                <li>Publish or reuse a web-based course component in Canvas</li>
+                <li>Publish or reuse a web-based course component in an LMS</li>
               </ul>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="slide" id="slide-3" aria-label="The custom interactive maintenance problem">
+      <section class="slide" id="slide-3" aria-label="What GitHub is and why instructional designers can use it">
+        <div class="slide-inner wide">
+          <p class="eyebrow reveal">A familiar tool, a new opportunity</p>
+          <h2 class="reveal">What is GitHub—and why might IDs use it?</h2>
+          <div class="presentation-overview reveal">
+            <article class="overview-part">
+              <h3>Usually for developers</h3>
+              <p>An online home for project files, revisions, and collaboration.</p>
+            </article>
+            <article class="overview-part">
+              <h3>Useful for instructional designers, too</h3>
+              <p>Vibe coding makes custom course interactives easier to create. GitHub gives those projects a place to live, change, and be shared.</p>
+            </article>
+          </div>
+          <p class="positioning-note github-bridge reveal">So when AI helps us build an interactive, what happens next?</p>
+        </div>
+      </section>
+
+      <section class="slide" id="slide-4" aria-label="The custom interactive maintenance problem">
         <div class="slide-inner wide">
           <p class="eyebrow reveal">The course-development challenge</p>
           <h1 class="reveal">AI makes custom course interactives easier. What happens next?</h1>
@@ -1554,15 +1576,15 @@
         </div>
       </section>
 
-      <section class="slide" id="slide-4" aria-label="Why GitHub belongs in an instructional design workflow">
+      <section class="slide" id="slide-5" aria-label="Why GitHub belongs in an instructional design workflow">
         <div class="slide-inner wide">
           <p class="eyebrow reveal">A useful division of responsibility</p>
-          <h2 class="positioning reveal">Canvas is where students experience it.<br><span>GitHub is where the project lives.</span></h2>
+          <h2 class="positioning reveal">The LMS is where students experience it.<br><span>GitHub is where the project lives.</span></h2>
           <p class="positioning-note reveal">That is the problem we are going to use GitHub to help solve today.</p>
         </div>
       </section>
 
-      <section class="slide" id="slide-5" aria-label="Instructional design lifecycle with GitHub">
+      <section class="slide" id="slide-6" aria-label="Instructional design lifecycle with GitHub">
         <div class="slide-inner wide">
           <p class="eyebrow reveal">A familiar instructional design lifecycle</p>
           <h2 class="reveal">GitHub supports the project across its life.</h2>
@@ -1571,13 +1593,13 @@
             <div class="lifecycle-step"><strong>DOCUMENT</strong><span>README for the next person</span></div>
             <div class="lifecycle-step"><strong>VERSION</strong><span>Commits: what, when, why</span></div>
             <div class="lifecycle-step"><strong>PUBLISH</strong><span>Pages gives it a web location</span></div>
-            <div class="lifecycle-step"><strong>DELIVER</strong><span>Canvas displays it to students</span></div>
+            <div class="lifecycle-step"><strong>DELIVER</strong><span>The LMS displays it to students</span></div>
             <div class="lifecycle-step"><strong>MAINTAIN</strong><span>Update one shared source</span></div>
           </div>
         </div>
       </section>
 
-      <section class="slide" id="slide-6" aria-label="Course rollover comparison">
+      <section class="slide" id="slide-7" aria-label="Course rollover comparison">
         <div class="slide-inner wide">
           <p class="eyebrow reveal">One practical maintenance question</p>
           <h2 class="reveal">What happens next semester?</h2>
@@ -1599,9 +1621,9 @@
               <div class="central-source">
                 <strong>One GitHub project</strong>
                 <ul class="consumer-list">
-                  <li>Fall Canvas course</li>
-                  <li>Spring Canvas course</li>
-                  <li>Summer Canvas course</li>
+                  <li>Fall LMS course</li>
+                  <li>Spring LMS course</li>
+                  <li>Summer LMS course</li>
                   <li>Other program site</li>
                 </ul>
               </div>
@@ -1611,7 +1633,7 @@
         </div>
       </section>
 
-      <section class="slide" id="slide-7" aria-label="What a future instructional designer needs to inherit a project">
+      <section class="slide" id="slide-8" aria-label="What a future instructional designer needs to inherit a project">
         <div class="slide-inner wide">
           <p class="eyebrow reveal">Design for the next owner, too</p>
           <h2 class="reveal">What happens when someone else inherits the course?</h2>
@@ -1625,7 +1647,7 @@
         </div>
       </section>
 
-      <section class="slide invert" id="slide-8" aria-label="Accordion Builder demonstration and participant repository">
+      <section class="slide invert" id="slide-9" aria-label="Accordion Builder demonstration and participant repository">
         <div class="slide-inner workshop-launch-centered">
           <p class="eyebrow reveal">From project home to student experience</p>
           <h2 class="reveal">Let’s explore the Accordion Builder.</h2>
